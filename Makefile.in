@@ -1,0 +1,33 @@
+SHELL = /bin/sh
+VPATH = @srcdir@
+
+subdirs = @subdirs@
+top_srcdir = @top_srcdir@
+srcdir = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = $(exec_prefix)/bin
+infodir = $(prefix)/info
+libdir = $(prefix)/lib/gnudl
+mandir = $(prefix)/man/man1
+
+CC = @CC@
+CPPFLAGS = @CPPFLAGS@
+CFLAGS = $(CPPFLAGS) @CFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@ @CRYPT_LIB@
+INSTALL = install
+
+ns_crypt:
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) ns_crypt.c $(LIBS) -o ns_crypt
+
+install: 
+	$(INSTALL) -m 0755 ns_crypt $(bindir)
+clean:
+	rm ns_crypt
+
+distclean:
+	rm ns_crypt Makefile config.status config.log
+	rm -rf autom4te.cache
+all:
+	ns_crypt
