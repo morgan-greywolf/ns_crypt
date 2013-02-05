@@ -1,0 +1,4 @@
+ns_crypt is a small program to encrypt or decrypt the {NS1} bind password
+strings for the Solaris /var/ldap/ldap_client_cred file without any dependency 
+on libsldap.  
+
